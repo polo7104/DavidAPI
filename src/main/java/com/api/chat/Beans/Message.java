@@ -3,8 +3,7 @@ package com.api.chat.Beans;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by David on 2016-08-22.
@@ -18,16 +17,18 @@ public class Message {
     @Id @GeneratedValue
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name="username")
-    private User sender;
+    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User username;
 
-//    @ManyToOne
-//    @JoinColumn(name="username")
-    private List<User> inRoomUsers = new ArrayList<>();
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<User> inRoomUsers;
 
     private String message;
 
 
+    @Column(name = "message_create")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date create;
 
 }

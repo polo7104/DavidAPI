@@ -17,6 +17,7 @@ import java.util.*;
 public class User {
 
     @Id @GeneratedValue
+    @Column(name = "user_id")
     private Long id;
 
     @Column(unique = true)
@@ -28,13 +29,19 @@ public class User {
     private String reg_id;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "user_create")
     private Date create;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "user_update")
     private Date update;
 
-//    @OneToMany(mappedBy = "user", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Friends> friends = new ArrayList<>();
+    @OneToMany(mappedBy = "user")
+    private List<Friends> friends = new ArrayList<Friends>();
+
+    @OneToMany(mappedBy = "inRoomUsers")
+    private List<Message> messages = new ArrayList<Message>();
+
 
 
 }

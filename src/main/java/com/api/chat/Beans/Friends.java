@@ -15,29 +15,24 @@ import java.util.Date;
 public class Friends {
 
     @Id @GeneratedValue
-    private Long id;
+    private Long friends_id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_name")
+    @Getter(AccessLevel.NONE)
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
     private String friend;
 
-    @Enumerated(EnumType.STRING)
-    private Relationship status;
+    private String status;
 
+    @Column(name = "friends_create")
     @Temporal(TemporalType.TIMESTAMP)
     private Date create;
 
+    @Column(name = "friends_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date update;
 
 }
 
-
-enum Relationship {
-        SINGLE, //  0
-        COUPLE, //  1
-        BLOCK,  //  2
-        DEL     //  3
-}

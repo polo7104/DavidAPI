@@ -1,4 +1,4 @@
-package com.api.chat.Beans;
+package com.api.chat.Domain;
 
 import lombok.*;
 
@@ -14,18 +14,14 @@ import java.util.*;
 @Entity
 public class Message {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue @Column(name = "messge_id")
     private Long id;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private User username;
-
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<User> inRoomUsers;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "room_id")
+//    private Room room;
 
     private String message;
-
 
     @Column(name = "message_create")
     @Temporal(TemporalType.TIMESTAMP)

@@ -1,9 +1,10 @@
-package com.api.chat.Beans;
+package com.api.chat.Domain;
 
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -14,7 +15,7 @@ import java.util.*;
 @AllArgsConstructor
 @Data
 @Entity
-public class User {
+public class User implements Serializable{
 
     @Id @GeneratedValue
     @Column(name = "user_id")
@@ -36,12 +37,20 @@ public class User {
     @Column(name = "user_update")
     private Date update;
 
-    @OneToMany(mappedBy = "user")
-    private List<Friends> friends = new ArrayList<Friends>();
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<User> friends = new ArrayList<User>();
 
-    @OneToMany(mappedBy = "inRoomUsers")
-    private List<Message> messages = new ArrayList<Message>();
 
+    @ManyToMany(mappedBy = "inRoomUsers")
+    private List<Room> rooms = new ArrayList<Room>();
+
+    public void addFriend(User addOne){
+        this.friends.add(addOne);
+    }
+
+    public void addRoom(Room addRoom){
+        this.rooms.add(addRoom);
+    }
 
 
 }

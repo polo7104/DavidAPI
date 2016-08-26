@@ -1,6 +1,6 @@
 package com.api.chat.Repository;
 
-import com.api.chat.Beans.Message;
+import com.api.chat.Domain.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

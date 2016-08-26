@@ -1,9 +1,7 @@
 package com.api.chat;
 
-import com.api.chat.Beans.Friends;
-import com.api.chat.Beans.User;
-import com.api.chat.Repository.FriendsRepository;
-import com.api.chat.Repository.UserRepository;
+import com.api.chat.Domain.*;
+import com.api.chat.Repository.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
@@ -30,7 +27,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 public class ChatController {
 
     @Autowired UserRepository       userRepository;
-    @Autowired FriendsRepository    friendsRepository;
+    @Autowired RoomRepository       roomRepository;
+    @Autowired FriendRepository     friendRepository;
 
 
 
@@ -72,7 +70,6 @@ public class ChatController {
             return new ResponseEntity<>("Nothing", HttpStatus.BAD_REQUEST);
         }
 
-        Friends friends = new Friends();
 
         User user = userRepository.findOne(id);
 
@@ -80,14 +77,8 @@ public class ChatController {
             return new ResponseEntity<>("user is null", HttpStatus.BAD_REQUEST);
         }
 
-        friends.setUser(user);
-        friends.setFriend(str_friend);
-        friends.setCreate(new Date());
-        friends.setUpdate(new Date());
 
-        Friends result = friendsRepository.save(friends);
-
-        return new ResponseEntity(result, HttpStatus.ACCEPTED);
+        return new ResponseEntity(user, HttpStatus.ACCEPTED);
     }
 
     @RequestMapping(value = "/get", method = GET)
@@ -97,45 +88,74 @@ public class ChatController {
         return new ResponseEntity<List<User>>(userList, HttpStatus.ACCEPTED);
     }
 
+    @RequestMapping(value = "/room", method = GET)
+    public ResponseEntity<List<Room>> getAllRoom(){
+        List<Room> userRoomListList= roomRepository.findAll();
+
+        return new ResponseEntity<List<Room>>(userRoomListList, HttpStatus.ACCEPTED);
+    }
+
     @RequestMapping(value = "/store")
     public ResponseEntity storeOne(){
-        User user = new User();
 
-			user.setUsername("david");
-			user.setPassword("4860ss");
-			user.setCreate(new Date());
-			user.setUpdate(new Date());
-			user.setReg_id("dddsseeessdfdcsdfasds");
-			User stored = userRepository.save(user);
+        User david = new User();
 
+			david.setUsername("david");
+			david.setPassword("4860ss");
+			david.setCreate(new Date());
+			david.setUpdate(new Date());
+			david.setReg_id("dddsseeessdfdcsdfasds");
+			User davidStored = userRepository.save(david);
 
-        Friends friends = new Friends();
-            friends.setUser(stored);
-            friends.setFriend("aa");
-            friends.setCreate(new Date());
-            friends.setUpdate(new Date());
-            friendsRepository.save(friends);
+        User lee = new User();
 
-        Friends friend2 = new Friends();
-        friend2.setUser(stored);
-        friend2.setFriend("bb");
-        friend2.setCreate(new Date());
-        friend2.setUpdate(new Date());
-        friendsRepository.save(friend2);
+            lee.setUsername("lee");
+            lee.setPassword("4860ss");
+            lee.setCreate(new Date());
+            lee.setUpdate(new Date());
+            lee.setReg_id("dddsseeessdfdcsdfasds");
+            User leeStored = userRepository.save(lee);
 
-//        Friends[] friends = new Friends[2];
-//
-//
-//        for(int i=0; i<2; i++) {
-//            friends[i].setUser(stored);
-//            friends[i].setFriend("aa"+i);
-//            friends[i].setFriends_create(new Date());
-//            friends[i].setFriends_update(new Date());
-//            friendsRepository.save(friends[i]);
-//        }
+        User jin = new User();
+
+            jin.setUsername("jin");
+            jin.setPassword("4860ss");
+            jin.setCreate(new Date());
+            jin.setUpdate(new Date());
+            jin.setReg_id("dddsseeessdfdcsdfasds");
+            User jinStored = userRepository.save(jin);
 
 
-        List saved = Arrays.asList(stored, friend2);
+        Friend friend1 = new Friend();
+
+            friend1.setFriend(leeStored);
+
+        Friend savedFriend = friendRepository.save(friend1);
+
+        davidStored.addFriend(savedFriend);
+
+        userRepository.save(davidStored);
+
+        Room room = new Room();
+
+        List<User> membersInRoom = new ArrayList<>();
+
+        membersInRoom.add(davidStored);
+        membersInRoom.add(leeStored);
+
+        room.setRoomname("Test");
+        room.setInRoomUsers(membersInRoom);
+
+        Room savedRoom = roomRepository.save(room);
+
+        jinStored.addRoom(savedRoom);
+        userRepository.save(jinStored);
+
+
+
+        List saved = Arrays.asList(davidStored , leeStored, jinStored
+//                , friends, friend2
+        );
 
 
         return new ResponseEntity<> (saved, HttpStatus.OK);

@@ -29,6 +29,7 @@ public class ChatController {
     @Autowired UserRepository       userRepository;
     @Autowired RoomRepository       roomRepository;
     @Autowired FriendRepository     friendRepository;
+    @Autowired MessageRepository    messageRepository;
 
 
 
@@ -98,6 +99,8 @@ public class ChatController {
     @RequestMapping(value = "/store")
     public ResponseEntity storeOne(){
 
+        // add Users
+
         User david = new User();
 
 			david.setUsername("david");
@@ -125,38 +128,37 @@ public class ChatController {
             jin.setReg_id("dddsseeessdfdcsdfasds");
             User jinStored = userRepository.save(jin);
 
-        davidStored.addFriend(jinStored);
-        davidStored.addFriend(leeStored);
+        // add Friends
 
-        davidStored = userRepository.save(davidStored);
+        Friend friend1 = new Friend();
 
-        Room room1 = new Room();
-        Room savedRoom1 = new Room();
+            friend1.setHost(david);
+            friend1.setGuest(lee);
+            friend1.setCreate(new Date());
+            friend1.setUpdate(new Date());
 
-        room1.setRoomname("david and jin");
-        room1.addUser(david);
-        room1.addUser(jinStored);
+            friendRepository.save(friend1);
 
-        savedRoom1 = roomRepository.save(room1);
+        Room room = new Room();
 
-        davidStored.addRoom(savedRoom1);
+            room.setRoomname("Test");
+            room.getUserList().add(david);
+            room.getUserList().add(jin);
+            room.getUserList().add(lee);
 
-        davidStored = userRepository.save(davidStored);
+        roomRepository.save(room);
 
+        Message message = new Message();
 
+            message.setMessage_create(new Date());
+            message.setSender(david);
+            message.setMessage("TETssdfsdf messagewew!@#!#");
 
-//        Friend friend1 = new Friend();
-//
-//            friend1.addUser(jinStored);
-//            friend1.addUser(leeStored);
-//
-//        System.out.println(friend1.toString());
-//
-//            friendRepository.save(friend1);
-//
-//
-//        davidStored.addFriend(friend1);
-//        userRepository.save(davidStored);
+        messageRepository.save(message);
+
+            room.getMessageList().add(message);
+
+        roomRepository.save(room);
 
 
         return new ResponseEntity<> (davidStored, HttpStatus.OK);

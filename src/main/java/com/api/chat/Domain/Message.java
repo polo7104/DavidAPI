@@ -20,14 +20,11 @@ public class Message {
     private String message;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date create;
+    private Date message_create;
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private User sender;
 
-    @ManyToOne
-    @JoinColumn(name = "room_id")
-    private Room room;
 
 }

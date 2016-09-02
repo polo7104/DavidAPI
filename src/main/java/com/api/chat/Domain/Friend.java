@@ -35,6 +35,9 @@ public class Friend {
     @JoinColumn(name = "guest_id")
     private User guest;
 
+    @Enumerated(EnumType.STRING)
+    private RelationShip status;
+
 
 
 }

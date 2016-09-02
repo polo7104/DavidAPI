@@ -37,11 +37,4 @@ public class User implements Serializable{
     @Column(name = "user_update")
     private Date update;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    private List<User> friendsList = new ArrayList<>();
-
-    public void addFriend (User friend){
-        friendsList.add(friend);
-    }
-
 }

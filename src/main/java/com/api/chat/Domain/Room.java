@@ -20,4 +20,11 @@ public class Room {
 
     private String roomname;
 
+    @Enumerated(EnumType.STRING)
+    private RelationShip status;
+
+    @ManyToMany
+    @JoinTable(name = "ROOM_USER", joinColumns = @JoinColumn(name = "room_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> userList = new ArrayList<>();
+
 }

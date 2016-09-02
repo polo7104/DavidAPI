@@ -17,14 +17,17 @@ public class Message {
     @Id @GeneratedValue @Column(name = "messge_id")
     private Long id;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "room_id")
-//    private Room room;
-
     private String message;
 
-    @Column(name = "message_create")
     @Temporal(TemporalType.TIMESTAMP)
     private Date create;
+
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private User sender;
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
 
 }

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f034bbfc-2fb4-4f15-9064-97b28883b4cd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/api/chat/ChatController.java" afterPath="$PROJECT_DIR$/src/main/java/com/api/chat/ChatController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java" afterPath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java" afterPath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Room.java" afterPath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Room.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/User.java" />
     </list>
@@ -28,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+            <state relative-caret-position="494">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="37" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -41,11 +41,9 @@
       <file leaf-file-name="Friend.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state relative-caret-position="589">
+              <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -53,30 +51,30 @@
       <file leaf-file-name="Room.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Room.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+            <state relative-caret-position="418">
+              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file leaf-file-name="RelationShip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/RelationShip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="171">
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -196,12 +194,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friends.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Repository/RoomRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Repository/FriendRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/api/chat/ChatController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Room.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java" />
       </list>
     </option>
   </component>
@@ -970,7 +968,7 @@
       <workItem from="1472194877476" duration="15872000" />
       <workItem from="1472541220465" duration="618000" />
       <workItem from="1472718590291" duration="639000" />
-      <workItem from="1472780147735" duration="1814000" />
+      <workItem from="1472780147735" duration="3541000" />
     </task>
     <task id="LOCAL-00001" summary="..">
       <created>1471859033131</created>
@@ -1032,7 +1030,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107344000" />
+    <option name="totallyTimeSpent" value="109071000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1688" y="-156" width="1696" height="1066" extended-state="6" />
@@ -1187,9 +1185,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1197,7 +1193,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1205,9 +1203,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1279,9 +1275,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,7 +1283,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1297,9 +1293,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1371,7 +1365,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1379,9 +1375,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1451,13 +1445,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/RelationShip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/api/DavidApiApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -1470,16 +1457,6 @@
         <state relative-caret-position="589">
           <caret line="31" column="8" selection-start-line="31" selection-start-column="8" selection-end-line="34" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1513,16 +1490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -1541,18 +1508,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Room.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state relative-caret-position="494">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="37" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Friend.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
+        <state relative-caret-position="589">
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/RelationShip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/api/chat/Domain/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
           <folding />
         </state>
       </provider>

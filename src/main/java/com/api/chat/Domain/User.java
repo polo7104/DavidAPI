@@ -37,20 +37,11 @@ public class User implements Serializable{
     @Column(name = "user_update")
     private Date update;
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<User> friends = new ArrayList<User>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<User> friendsList = new ArrayList<>();
 
-
-    @ManyToMany(mappedBy = "inRoomUsers")
-    private List<Room> rooms = new ArrayList<Room>();
-
-    public void addFriend(User addOne){
-        this.friends.add(addOne);
+    public void addFriend (User friend){
+        friendsList.add(friend);
     }
-
-    public void addRoom(Room addRoom){
-        this.rooms.add(addRoom);
-    }
-
 
 }

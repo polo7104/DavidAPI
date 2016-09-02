@@ -125,39 +125,40 @@ public class ChatController {
             jin.setReg_id("dddsseeessdfdcsdfasds");
             User jinStored = userRepository.save(jin);
 
+        davidStored.addFriend(jinStored);
+        davidStored.addFriend(leeStored);
 
-        Friend friend1 = new Friend();
+        davidStored = userRepository.save(davidStored);
 
-            friend1.setFriend(leeStored);
+        Room room1 = new Room();
+        Room savedRoom1 = new Room();
 
-        Friend savedFriend = friendRepository.save(friend1);
+        room1.setRoomname("david and jin");
+        room1.addUser(david);
+        room1.addUser(jinStored);
 
-        davidStored.addFriend(savedFriend);
+        savedRoom1 = roomRepository.save(room1);
 
-        userRepository.save(davidStored);
+        davidStored.addRoom(savedRoom1);
 
-        Room room = new Room();
-
-        List<User> membersInRoom = new ArrayList<>();
-
-        membersInRoom.add(davidStored);
-        membersInRoom.add(leeStored);
-
-        room.setRoomname("Test");
-        room.setInRoomUsers(membersInRoom);
-
-        Room savedRoom = roomRepository.save(room);
-
-        jinStored.addRoom(savedRoom);
-        userRepository.save(jinStored);
+        davidStored = userRepository.save(davidStored);
 
 
 
-        List saved = Arrays.asList(davidStored , leeStored, jinStored
-//                , friends, friend2
-        );
+//        Friend friend1 = new Friend();
+//
+//            friend1.addUser(jinStored);
+//            friend1.addUser(leeStored);
+//
+//        System.out.println(friend1.toString());
+//
+//            friendRepository.save(friend1);
+//
+//
+//        davidStored.addFriend(friend1);
+//        userRepository.save(davidStored);
 
 
-        return new ResponseEntity<> (saved, HttpStatus.OK);
+        return new ResponseEntity<> (davidStored, HttpStatus.OK);
     }
 }

@@ -18,13 +18,6 @@ public class Room {
     @Id @GeneratedValue @Column(name = "room_id")
     private Long id;
 
-//    @Column(unique = true)
     private String roomname;
-
-    private List<String> inRoomUsers = new ArrayList<>();
-
-//    @Setter(AccessLevel.NONE)
-//    @OneToMany(mappedBy = "room")
-//    private List<Message> messages = new ArrayList<Message>();
 
 }

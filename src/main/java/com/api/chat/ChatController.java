@@ -1,14 +1,18 @@
 package com.api.chat;
 
 import com.api.chat.Domain.*;
+import com.api.chat.Domain.Message;
 import com.api.chat.Repository.*;
+import com.google.android.gcm.server.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.ManagedMap;
 import org.springframework.http.*;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import java.util.*;
@@ -30,8 +34,13 @@ public class ChatController {
     @Autowired RoomRepository       roomRepository;
     @Autowired FriendRepository     friendRepository;
     @Autowired MessageRepository    messageRepository;
+    @Autowired ChatService          chatService;
 
-
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request){
+        log.info("session id : {} ", request.getSession().getId());
+        return request.getSession().getId();
+    }
 
     @RequestMapping(value = "/signup", method = POST,  produces  = "application/json")
     public ResponseEntity signUp(@RequestBody @Valid User user, BindingResult result){
@@ -41,53 +50,46 @@ public class ChatController {
             return new ResponseEntity("[ERROR]"+result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
 
-        user.setCreate(new Date());
-        user.setUpdate(new Date());
-
-        User userResult = userRepository.save(user);
-
+        User userResult = chatService.saveUser(user);
 
         return new ResponseEntity<>(userResult, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/search/{username}", method = GET)
+    @RequestMapping(value = "/search/user/{username}", method = GET)
     public ResponseEntity searchOne(@PathVariable String username){
 
         if(username == null){
             return new ResponseEntity<>("Nothing", HttpStatus.BAD_REQUEST);
         }
 
-        User user = userRepository.findByUsername(username);
-        //
-
+        User user = chatService.findByUserName(username);
 
         return new ResponseEntity(user, HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "/add/{id}/friend/{friend}", method = GET)
-    public ResponseEntity addFriend(@PathVariable("id") Long id, @PathVariable("friend") String str_friend){
 
-        if(id == null || str_friend == null){
-            return new ResponseEntity<>("Nothing", HttpStatus.BAD_REQUEST);
-        }
+    @RequestMapping(value = "/get/{username}", method = GET)
+    public ResponseEntity getAll(@PathVariable String username){
+
+        User user = chatService.findByUserName(username);
+
+        List<Friend> friendList = chatService.getFriends(user);
+
+        List<Room> roomList = chatService.getRooms(user);
+
+        HashMap data = new ManagedMap();
+
+        data.put("user", user);
+        data.put("friends", friendList);
+        data.put("rooms", roomList);
 
 
-        User user = userRepository.findOne(id);
-
-        if(user == null){
-            return new ResponseEntity<>("user is null", HttpStatus.BAD_REQUEST);
-        }
+//        List data = Arrays.asList(user, friendList, roomList);
 
 
-        return new ResponseEntity(user, HttpStatus.ACCEPTED);
+        return new ResponseEntity(data, HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "/get", method = GET)
-    public ResponseEntity<List<User>> getAll(){
-        List<User> userList= userRepository.findAll();
-
-        return new ResponseEntity<List<User>>(userList, HttpStatus.ACCEPTED);
-    }
 
     @RequestMapping(value = "/room", method = GET)
     public ResponseEntity<List<Room>> getAllRoom(){
@@ -163,4 +165,66 @@ public class ChatController {
 
         return new ResponseEntity<> (davidStored, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/getAll", method=GET)
+    public ResponseEntity getAll(){
+        List<User> users = userRepository.findAll();
+
+        HashMap data = new ManagedMap();
+
+        data.put("friends", users);
+
+        return new ResponseEntity (data, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/sendmessage")
+    public String sendMessage(
+//            @RequestBody @Valid Message msg, BindingResult result
+    ){
+
+        String api_key = "AIzaSyBiqILTT-Z-NRx1GtPZMOGpgiFbTZuc3yw";
+        int retry_cnt = 3;
+
+//        List<String> reg_ids = new ArrayList<>();
+//        reg_ids.add("eAz3VDSJdzA:APA91bE7h2aygdqjWh4oZKZHlemUoOcis3U6gKtTRO59Rp5AzpgfuIoyDd4DNDcwG7_kQ3JIrGm1xBq1H9ssAhgCC3SiDLywPlBUTuMT9ssNPcuKkzwE39YUdhavfWoMVSmuwpM8fqeA");
+
+        List<String> reg_ids = chatService.getRegIds();
+
+        com.google.android.gcm.server.Message message = new com.google.android.gcm.server.Message.Builder().collapseKey("collapseKey"+System.currentTimeMillis()).timeToLive(3)
+                .delayWhileIdle(true).addData("message", "Test Data Web Push. God always Loves David.").build();
+
+        Sender sender = new Sender(api_key);
+        try {
+            sender.send(message, reg_ids, retry_cnt);
+        }catch (Exception e){
+
+        }
+        return "Send Ok";
+    }
+
+    @RequestMapping(value = "/send/{username}")
+    public String sendMessage(@PathVariable String username){
+
+        String api_key = "AIzaSyBiqILTT-Z-NRx1GtPZMOGpgiFbTZuc3yw";
+        int retry_cnt = 3;
+
+//        List<String> reg_ids = new ArrayList<>();
+//        reg_ids.add("eAz3VDSJdzA:APA91bE7h2aygdqjWh4oZKZHlemUoOcis3U6gKtTRO59Rp5AzpgfuIoyDd4DNDcwG7_kQ3JIrGm1xBq1H9ssAhgCC3SiDLywPlBUTuMT9ssNPcuKkzwE39YUdhavfWoMVSmuwpM8fqeA");
+
+        String reg_id = chatService.getSingleId(username);
+
+        com.google.android.gcm.server.Message message = new com.google.android.gcm.server.Message.Builder().collapseKey("collapseKey"+System.currentTimeMillis()).timeToLive(3)
+                .delayWhileIdle(true).addData("message", "Test Data Web Push. God always Loves David.").build();
+
+        Sender sender = new Sender(api_key);
+        try {
+            sender.send(message, reg_id, retry_cnt);
+        }catch (Exception e){
+
+        }
+        return "Send Ok";
+
+    }
+
+
 }
